@@ -602,16 +602,30 @@ const viewInvoice = async (id) => {
 
 const downloadInvoice = async (id) => {
   try {
-    const { data } = await $fetch(`/api/invoices/${id}/download`, {
-      headers: getAuthHeader()
+    const headers = {
+      ...getAuthHeader(),
+      'Accept': 'application/json'
+    }
+    
+    const response = await $fetch(`/api/invoices/${id}/download`, {
+      headers
     })
-    // Create download link
-    const link = document.createElement('a')
-    link.href = data.downloadUrl
-    link.download = data.filename
-    link.click()
+    
+    if (response.success && response.data) {
+      // Create download link
+      const link = document.createElement('a')
+      link.href = response.data.downloadUrl
+      link.download = response.data.filename
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+    } else {
+      throw new Error('Invalid response format')
+    }
   } catch (error) {
     console.error('Error downloading invoice:', error)
+    // Show user-friendly error message
+    alert('Failed to download invoice. Please try again.')
   }
 }
 

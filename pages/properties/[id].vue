@@ -417,7 +417,7 @@ definePageMeta({
 const { user, logout } = useAuth()
 const { currencySymbol } = useCurrency()
 const route = useRoute()
-const { showToast } = useToast()
+const toast = useToast()
 
 // Data and state
 const loading = ref(true)
@@ -544,7 +544,7 @@ const addUnit = async () => {
       showAddUnitModal.value = false
       
       // Show success message
-      showToast(`Unit ${unitData.unitNumber} added successfully!`, 'success')
+      toast.success('Unit ${unitData.unitNumber} added successfully!')
     }
   } catch (error) {
     console.error('Failed to add unit:', error)
@@ -572,7 +572,7 @@ const addUnit = async () => {
       errorMessage = 'No internet connection. Please check your connection and try again.'
     }
     
-    showToast(errorMessage, 'error')
+    toast.error('Error', errorMessage)
   } finally {
     unitSubmitting.value = false
   }

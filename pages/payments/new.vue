@@ -328,7 +328,7 @@ definePageMeta({
 })
 
 const { currencySymbol } = useCurrency()
-const { showToast } = useToast()
+const toast = useToast()
 
 
 
@@ -498,17 +498,17 @@ const handleSubmit = async () => {
     
     // Client-side validation before submitting
     if (isOverpayment.value) {
-      showToast(`Cannot record payment: Amount exceeds remaining balance of ${currencySymbol.value}${remainingBalance.value}`, 'error')
+      toast.error('Error', `Cannot record payment: Amount exceeds remaining balance of ${currencySymbol.value}${remainingBalance.value}`)
       return
     }
     
     if (form.paymentType === 'Rent' && !form.monthFor) {
-      showToast('Please select the month this rent payment covers', 'error')
+      toast.error('Error', 'Please select the month this rent payment covers')
       return
     }
     
     if (!selectedTenant.value) {
-      showToast('Please select a tenant before recording the payment', 'error')
+      toast.error('Error', 'Please select a tenant before recording the payment')
       return
     }
     
@@ -526,7 +526,7 @@ const handleSubmit = async () => {
 
     if (response.success) {
       const tenantName = selectedTenant.value ? `${selectedTenant.value.personalInfo.firstName} ${selectedTenant.value.personalInfo.lastName}` : 'tenant'
-      showToast(`Payment for ${tenantName} recorded successfully!`, 'success')
+      toast.success('Payment for ${tenantName} recorded successfully!')
       await navigateTo('/payments')
     }
   } catch (error) {
@@ -556,7 +556,7 @@ const handleSubmit = async () => {
       errorMessage = 'Please fill in all required fields marked with an asterisk (*).'
     }
     
-    showToast(errorMessage, 'error')
+    toast.error('Error', errorMessage)
   } finally {
     loading.value = false
   }

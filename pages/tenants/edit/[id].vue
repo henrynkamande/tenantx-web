@@ -207,7 +207,7 @@ definePageMeta({
 })
 
 const { currencySymbol } = useCurrency()
-const { showToast } = useToast()
+const toast = useToast()
 const route = useRoute()
 const tenantId = route.params.id
 
@@ -328,12 +328,12 @@ const handleSubmit = async () => {
     })
 
     if (response.success) {
-      showToast(`Tenant ${form.firstName} ${form.lastName} updated successfully!`, 'success')
+      toast.success('Tenant ${form.firstName} ${form.lastName} updated successfully!')
       await navigateTo('/tenants')
     }
   } catch (error) {
     console.error('Failed to update tenant:', error)
-    showToast('Failed to update tenant. Please try again.', 'error')
+    toast.error('Error', 'Failed to update tenant. Please try again.')
   } finally {
     loading.value = false
   }

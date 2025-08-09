@@ -328,7 +328,7 @@ definePageMeta({
 })
 
 const { currencySymbol } = useCurrency()
-const { showToast } = useToast()
+const toast = useToast()
 
 
 
@@ -381,12 +381,12 @@ const handleSubmit = async () => {
     })
 
     if (response.success) {
-      showToast(`Property '${form.name}' created successfully!`, 'success')
+      toast.info(`Property '${form.name}' created successfully!`, 'success')
       await navigateTo('/properties')
     }
   } catch (error) {
     console.error('Failed to create property:', error)
-    showToast('Failed to create property. Please try again.', 'error')
+    toast.error('Error', 'Failed to create property. Please try again.')
   } finally {
     loading.value = false
   }

@@ -126,7 +126,7 @@ definePageMeta({
 
 const authStore = useAuthStore()
 const router = useRouter()
-const { showToast } = useToast()
+const toast = useToast()
 
 const form = reactive({
   email: '',
@@ -150,13 +150,13 @@ const handleLogin = async () => {
       hasToken: !!authStore.accessToken
     })
     
-    showToast('Login successful!', 'success')
+    toast.success('Login successful!', 'Welcome to TenantX!')
     // Redirect to dashboard
     await navigateTo('/dashboard')
   } catch (err) {
     console.error('Login error:', err)
     error.value = err.data?.message || err.message || 'Login failed. Please try again.'
-    showToast(error.value, 'error')
+    toast.error('Login failed', error.value)
   }
 }
 

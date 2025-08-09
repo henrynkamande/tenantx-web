@@ -29,6 +29,21 @@ const paymentSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Invoice'
   },
+  
+  // Payment method details (for invoice payments)
+  method: {
+    type: String,
+    enum: ['mpesa', 'bank', 'cash', 'card', 'other'],
+    default: 'other'
+  },
+  reference: {
+    type: String,
+    trim: true
+  },
+  meta: {
+    type: mongoose.Schema.Types.Mixed,
+    default: {}
+  },
   propertyId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Property'

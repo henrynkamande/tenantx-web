@@ -101,7 +101,7 @@ definePageMeta({
 })
 
 const { currencySymbol } = useCurrency()
-const { showToast } = useToast()
+const toast = useToast()
 
 // Data and state
 const loading = ref(true)
@@ -132,11 +132,11 @@ const deleteProperty = async (propertyId) => {
   if (confirm('Are you sure you want to delete this property?')) {
     try {
       const response = await $fetch(`/api/properties/${propertyId}`, { method: 'DELETE' })
-      showToast('Property deleted successfully!', 'success')
+      toast.success('Property deleted successfully!')
       await fetchProperties() // Refresh the list
     } catch (error) {
       console.error('Failed to delete property:', error)
-      showToast('Failed to delete property. Please try again.', 'error')
+      toast.error('Error', 'Failed to delete property. Please try again.')
     }
   }
 }

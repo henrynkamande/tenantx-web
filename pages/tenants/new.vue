@@ -206,7 +206,7 @@ definePageMeta({
 })
 
 const { currencySymbol } = useCurrency()
-const { showToast } = useToast()
+const toast = useToast()
 
 
 
@@ -296,12 +296,12 @@ const handleSubmit = async () => {
     })
 
     if (response.success) {
-      showToast(`Tenant ${form.firstName} ${form.lastName} created successfully!`, 'success')
+      toast.success('Tenant ${form.firstName} ${form.lastName} created successfully!')
       await navigateTo('/tenants')
     }
   } catch (error) {
     console.error('Failed to create tenant:', error)
-    showToast('Failed to create tenant. Please try again.', 'error')
+    toast.error('Error', 'Failed to create tenant. Please try again.')
   } finally {
     loading.value = false
   }

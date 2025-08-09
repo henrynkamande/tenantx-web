@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 import bcrypt from 'bcryptjs'
+import { randomBytes, createHash } from 'crypto'
 
 const landlordSchema = new mongoose.Schema({
   // Basic information
@@ -194,10 +195,9 @@ landlordSchema.methods.resetLoginAttempts = function() {
 
 // Method to generate password reset token
 landlordSchema.methods.createPasswordResetToken = function() {
-  const resetToken = require('crypto').randomBytes(32).toString('hex')
+  const resetToken = randomBytes(32).toString('hex')
   
-  this.passwordResetToken = require('crypto')
-    .createHash('sha256')
+  this.passwordResetToken = createHash('sha256')
     .update(resetToken)
     .digest('hex')
   
@@ -208,10 +208,9 @@ landlordSchema.methods.createPasswordResetToken = function() {
 
 // Method to generate email verification token
 landlordSchema.methods.createEmailVerificationToken = function() {
-  const verificationToken = require('crypto').randomBytes(32).toString('hex')
+  const verificationToken = randomBytes(32).toString('hex')
   
-  this.emailVerificationToken = require('crypto')
-    .createHash('sha256')
+  this.emailVerificationToken = createHash('sha256')
     .update(verificationToken)
     .digest('hex')
   

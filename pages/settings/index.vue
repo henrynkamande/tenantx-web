@@ -167,6 +167,153 @@
             </div>
           </div>
 
+          <!-- Billing Settings -->
+          <div v-if="activeTab === 'billing'" class="bg-white shadow rounded-lg">
+            <div class="px-4 py-5 sm:p-6">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg leading-6 font-medium text-gray-900">Billing Settings</h3>
+                <NuxtLink 
+                  to="/settings/billing" 
+                  class="bg-blue-600 border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                >
+                  Open Full Billing Settings
+                </NuxtLink>
+              </div>
+              
+              <div class="space-y-6">
+                <div class="bg-blue-50 border border-blue-200 rounded-md p-4">
+                  <h4 class="text-sm font-medium text-blue-900 mb-2">Multi-Landlord Invoicing</h4>
+                  <p class="text-sm text-blue-700 mb-3">
+                    Configure your business information, branding, tax settings, invoice numbering, and payment methods for professional invoicing.
+                  </p>
+                  <ul class="text-sm text-blue-600 space-y-1">
+                    <li>• Business Information & Address</li>
+                    <li>• Custom Branding & Logo</li>
+                    <li>• Tax Settings (VAT/KRA)</li>
+                    <li>• Invoice Numbering & Formatting</li>
+                    <li>• Payment Methods (M-Pesa, Bank, Card)</li>
+                  </ul>
+                </div>
+                
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <div class="border border-gray-200 rounded-lg p-4">
+                    <div class="flex items-center">
+                      <Icon name="heroicons:building-office" class="h-5 w-5 text-gray-400 mr-2" />
+                      <h4 class="text-sm font-medium text-gray-900">Business Info</h4>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-1">Company details and contact information</p>
+                  </div>
+                  
+                  <div class="border border-gray-200 rounded-lg p-4">
+                    <div class="flex items-center">
+                      <Icon name="heroicons:paint-brush" class="h-5 w-5 text-gray-400 mr-2" />
+                      <h4 class="text-sm font-medium text-gray-900">Branding</h4>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-1">Logo, colors, and invoice styling</p>
+                  </div>
+                  
+                  <div class="border border-gray-200 rounded-lg p-4">
+                    <div class="flex items-center">
+                      <Icon name="heroicons:calculator" class="h-5 w-5 text-gray-400 mr-2" />
+                      <h4 class="text-sm font-medium text-gray-900">Tax Settings</h4>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-1">VAT rates and tax configuration</p>
+                  </div>
+                  
+                  <div class="border border-gray-200 rounded-lg p-4">
+                    <div class="flex items-center">
+                      <Icon name="heroicons:credit-card" class="h-5 w-5 text-gray-400 mr-2" />
+                      <h4 class="text-sm font-medium text-gray-900">Payment Methods</h4>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-1">Configure payment options for tenants</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Invoice Settings -->
+          <div v-if="activeTab === 'invoices'" class="bg-white shadow rounded-lg">
+            <div class="px-4 py-5 sm:p-6">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg leading-6 font-medium text-gray-900">Invoice Settings</h3>
+                <NuxtLink 
+                  to="/invoices" 
+                  class="bg-green-600 border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                >
+                  Manage Invoices
+                </NuxtLink>
+              </div>
+              
+              <div class="space-y-6">
+                <div class="bg-green-50 border border-green-200 rounded-md p-4">
+                  <h4 class="text-sm font-medium text-green-900 mb-2">Invoice Management Features</h4>
+                  <p class="text-sm text-green-700 mb-3">
+                    Create, manage, and send professional invoices to your tenants with advanced features.
+                  </p>
+                  <ul class="text-sm text-green-600 space-y-1">
+                    <li>• Create & Send Individual Invoices</li>
+                    <li>• Bulk Invoice Generation</li>
+                    <li>• PDF Download & Email Delivery</li>
+                    <li>• Payment Tracking & Status</li>
+                    <li>• Public Tenant View Links</li>
+                    <li>• Multi-Currency Support</li>
+                  </ul>
+                </div>
+                
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                  <div class="text-center p-4 border border-gray-200 rounded-lg">
+                    <Icon name="heroicons:document-plus" class="h-8 w-8 text-blue-500 mx-auto mb-2" />
+                    <h4 class="text-sm font-medium text-gray-900">Create Invoices</h4>
+                    <p class="text-xs text-gray-500 mt-1">Generate new invoices for tenants</p>
+                  </div>
+                  
+                  <div class="text-center p-4 border border-gray-200 rounded-lg">
+                    <Icon name="heroicons:document-arrow-down" class="h-8 w-8 text-green-500 mx-auto mb-2" />
+                    <h4 class="text-sm font-medium text-gray-900">PDF Export</h4>
+                    <p class="text-xs text-gray-500 mt-1">Download branded PDF invoices</p>
+                  </div>
+                  
+                  <div class="text-center p-4 border border-gray-200 rounded-lg">
+                    <Icon name="heroicons:envelope" class="h-8 w-8 text-purple-500 mx-auto mb-2" />
+                    <h4 class="text-sm font-medium text-gray-900">Email Delivery</h4>
+                    <p class="text-xs text-gray-500 mt-1">Send invoices directly to tenants</p>
+                  </div>
+                </div>
+                
+                <div class="border-t border-gray-200 pt-4">
+                  <h4 class="text-sm font-medium text-gray-900 mb-3">Quick Actions</h4>
+                  <div class="flex flex-wrap gap-2">
+                    <NuxtLink 
+                      to="/invoices/create" 
+                      class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full hover:bg-blue-200"
+                    >
+                      Create New Invoice
+                    </NuxtLink>
+                    <NuxtLink 
+                      to="/invoices?status=draft" 
+                      class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-1 rounded-full hover:bg-gray-200"
+                    >
+                      View Draft Invoices
+                    </NuxtLink>
+                    <NuxtLink 
+                      to="/invoices?status=sent" 
+                      class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-1 rounded-full hover:bg-green-200"
+                    >
+                      View Sent Invoices
+                    </NuxtLink>
+                    <NuxtLink 
+                      to="/settings/billing" 
+                      class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-1 rounded-full hover:bg-purple-200"
+                    >
+                      Configure Billing
+                    </NuxtLink>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- Theme Settings -->
           <div v-if="activeTab === 'appearance'" class="bg-white shadow rounded-lg">
             <div class="px-4 py-5 sm:p-6">
@@ -434,6 +581,8 @@ const checkingDefaults = ref(false)
 const tabs = [
   { id: 'profile', name: 'Profile', icon: 'heroicons:user' },
   { id: 'rent', name: 'Rent Management', icon: 'heroicons:home' },
+  { id: 'billing', name: 'Billing Settings', icon: 'heroicons:credit-card' },
+  { id: 'invoices', name: 'Invoice Settings', icon: 'heroicons:document-text' },
   { id: 'appearance', name: 'Appearance', icon: 'heroicons:paint-brush' },
   { id: 'notifications', name: 'Notifications', icon: 'heroicons:bell' },
   { id: 'security', name: 'Security', icon: 'heroicons:lock-closed' }

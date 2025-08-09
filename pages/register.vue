@@ -203,7 +203,7 @@ definePageMeta({
 
 const authStore = useAuthStore()
 const router = useRouter()
-const { showToast } = useToast()
+const toast = useToast()
 
 const form = reactive({
   firstName: '',
@@ -235,11 +235,11 @@ const handleRegister = async () => {
     }
     
     await authStore.register(registrationData)
-    showToast('Account created successfully! Welcome to TenantX.', 'success')
+    toast.success('Account created successfully!', 'Welcome to TenantX.')
     await router.push('/dashboard')
   } catch (err) {
     error.value = err.data?.message || 'Registration failed. Please try again.'
-    showToast(error.value, 'error')
+    toast.error('Registration failed', error.value)
   }
 }
 

@@ -335,7 +335,7 @@ definePageMeta({
   layout: 'dashboard'
 })
 
-const { showToast } = useToast()
+const toast = useToast()
 
 
 
@@ -402,7 +402,7 @@ const handleFileUpload = (event) => {
     if (file.size <= 10 * 1024 * 1024) { // 10MB limit
       form.photos.push(file)
     } else {
-      showToast(`File ${file.name} is too large. Maximum size is 10MB.`, 'error')
+      toast.error('Error', `File ${file.name} is too large. Maximum size is 10MB.`)
     }
   })
 }
@@ -438,12 +438,12 @@ const handleSubmit = async () => {
     })
 
     if (response.success) {
-      showToast(`Maintenance request '${form.title}' created successfully!`, 'success')
+      toast.info(`Maintenance request '${form.title}' created successfully!`, 'success')
       await navigateTo('/maintenance')
     }
   } catch (error) {
     console.error('Failed to create maintenance request:', error)
-    showToast('Failed to create maintenance request. Please try again.', 'error')
+    toast.error('Error', 'Failed to create maintenance request. Please try again.')
   } finally {
     loading.value = false
   }
